@@ -8,17 +8,17 @@ namespace JobManager.Services
 {
     class JobDataStoreLocalJson : IJobDataStore<Job>
     {
-        public Task AddJob(Job job)
+        public async Task AddJob(Job job)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteJob(Job job)
+        public async Task DeleteJob(Job job)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Job> GetJob(int jobId)
+        public async Task<Job> GetJob(int jobId)
         {
             throw new NotImplementedException();
         }
@@ -36,7 +36,7 @@ namespace JobManager.Services
             //throw new NotImplementedException();
         }
 
-        public Task UpdateJob(Job job)
+        public async Task UpdateJob(Job job)
         {
             throw new NotImplementedException();
         }
