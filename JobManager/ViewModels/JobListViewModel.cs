@@ -22,6 +22,10 @@ namespace JobManager.ViewModels
         public JobListViewModel()
         {
             Title = "Jobs";
+
+            Jobs = new ObservableRangeCollection<Job>();
+            LoadJobs();
+
             RefreshCommand = new AsyncCommand(Refresh);
             SelectCommand = new AsyncCommand<Job>(Selected);
 
