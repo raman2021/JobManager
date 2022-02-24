@@ -14,6 +14,7 @@ namespace JobManager
             InitializeComponent();
             Routing.RegisterRoute(nameof(WelcomePage), typeof(WelcomePage));
             Routing.RegisterRoute(nameof(JobListPage), typeof(JobListPage));
+            Routing.RegisterRoute(nameof(JobDetailPage), typeof(JobDetailPage));
         }
 
        /* private async void OnMenuItemClicked(object sender, EventArgs e)

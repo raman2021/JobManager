@@ -10,15 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace JobManager.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class JobListPage : ContentPage
+    public partial class JobDetailPage : ContentPage
     {
-        public JobListPage()
+        public JobDetailPage()
         {
             InitializeComponent();
         }
-      /*  protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        } */
     }
 }

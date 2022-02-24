@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace JobManager.ViewModels
 {
@@ -33,7 +34,9 @@ namespace JobManager.ViewModels
 
         private async Task Selected(Job job)
         {
-
+            //var route = "JobDetailPage?JobId=2";
+            var route = $"{nameof(Views.JobDetailPage)}?JobId={job.Id}";
+            await Shell.Current.GoToAsync(route);
         }
         public async Task Refresh()
         {
