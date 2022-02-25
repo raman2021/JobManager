@@ -18,7 +18,15 @@ namespace JobManager.Services
 
         public async Task WriteFile(List<Job> jobs)
         {
-            throw new NotImplementedException();
+            var jsonString = JsonConvert.SerializeObject(jobs);
+            var stream = new MemoryStream();
+            var writer = new StreamWriter(stream);
+            writer.Write(jsonString);
+            writer.Flush();
+            stream.Position = 0;
+            BlobClient blob = service.GetBlobContainerClient(Container).GetBlobClient(Filename);
+
+
         }
         public async Task<List<Job>> ReadFile()
         {
