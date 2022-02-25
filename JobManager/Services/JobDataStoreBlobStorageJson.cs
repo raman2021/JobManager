@@ -25,6 +25,7 @@ namespace JobManager.Services
             writer.Flush();
             stream.Position = 0;
             BlobClient blob = service.GetBlobContainerClient(Container).GetBlobClient(Filename);
+            await blob.UploadAsync(stream);
 
 
         }
@@ -82,11 +83,17 @@ namespace JobManager.Services
             throw new NotImplementedException();
         } 
 
-        public Task<IEnumerable<Job>> GetJobs()
+        public async Task<List<Job>> GetJobs()
+        {
+            var jobs = await ReadFile();
+            return jobs;
+        }
+        public async Task UpdateJob(Job job)
         {
             throw new NotImplementedException();
         }
-        public async Task UpdateJob(Job job)
+
+        Task<IEnumerable<Job>> IJobDataStore<Job>.GetJobs()
         {
             throw new NotImplementedException();
         }

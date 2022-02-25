@@ -65,11 +65,11 @@ namespace JobManager.Services
             //throw new NotImplementedException();
         }
 
-        private void WriteFile (List<Job> jobs)
+       private void WriteFile (List<Job> jobs)
         {
             var jsonString = JsonConvert.SerializeObject(jobs);
             File.WriteAllText(FilePath, jsonString);
-        }
+        } 
 
         private List<Job> ReadFile()
         {
