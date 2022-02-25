@@ -67,10 +67,12 @@ namespace JobManager.Services
 
 
 
-        //https;AccountName=isp1004students2;AccountKey=SIgAofMWnbAOWa0rUyL96/VBKTgnhWipVm1aMCB0RvdFwokcUSLrKL1pYVMjAP6bcL0W4fHsegGD+AStb4GGag==;EndpointSuffix=core.windows.net
+       
         public async Task AddJob(Job job)
         {
-            throw new NotImplementedException();
+            var jobs = await ReadFile();
+            jobs.Add(job);
+            await WriteFile(jobs);
         }
 
         public Task DeleteJob(Job job)
@@ -80,17 +82,21 @@ namespace JobManager.Services
 
         public async Task<Job> GetJob(int jobId)
         {
-            throw new NotImplementedException();
+            var jobs = await ReadFile();
+            var job = jobs.Find(p => p.Id == jobId);
+            return job;
         } 
 
-        public async Task<List<Job>> GetJobs()
+        public async Task<IEnumerable<Job>> GetJobs()
         {
             var jobs = await ReadFile();
             return jobs;
         }
         public async Task UpdateJob(Job job)
         {
-            throw new NotImplementedException();
+            var jobs = await ReadFile ();
+            jobs[jobs.FindIndex(p => p.Id == job.Id)] = job;
+            await WriteFile (jobs);
         }
 
         Task<IEnumerable<Job>> IJobDataStore<Job>.GetJobs()
