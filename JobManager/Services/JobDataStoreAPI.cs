@@ -29,8 +29,19 @@ namespace JobManager.Services
 
         public Task DeleteJob(Job job)
         {
-            throw new NotImplementedException();
+            var service = DependencyService.Get<IWebClientService>();
+
+            var jsonString = await service.PostAsync($"{API}/Jobs", JsonConvert.SerializeObject(job), "application/json");
+
+            if (jsonString != null)
+            {
+                var newJob = JsonConvert.DeserializeObject<Job>(jsonString);
+            }
+
+            //Consider returning a bool to verify if the job was created.
         }
+
+       
 
         public async Task<Job> GetJob(int jobId)
         {
@@ -52,11 +63,12 @@ namespace JobManager.Services
 
         public async Task UpdateJob(Job job)
         {
-            var service = DependencyService.Get<IWebClientService>();
+            //var service = DependencyService.Get<IWebClientService>();
 
-            await service.PutAsync($"{API}/Jobs/{job.ID}", JsonConvert.SerializeObject(job), "application/json");
+            //await service.PutAsync($"{API}/Jobs/{job.ID}", JsonConvert.SerializeObject(job), "application/json");
 
             //Consider returning a bool to verify if the job was updated.
+            return jobs;
         }
     }
 }
