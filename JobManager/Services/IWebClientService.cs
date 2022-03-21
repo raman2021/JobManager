@@ -10,6 +10,7 @@ namespace JobManager.Services
         //
         Task<string> GetAsync(string uri);
         Task<string> PostAsync(string uri, string body, string type);
-
+        Task GetAsync(string v);
+        Task PostAsync(string v1, string v2, string v3);
     }
 }

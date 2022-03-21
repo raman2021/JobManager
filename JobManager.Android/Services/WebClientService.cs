@@ -1,36 +1,54 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JobManager.Services;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Net.Http;
-using Xamarin.Forms;
+using System.Threading.Tasks;
+using System.Text;
+using Android.Content;
 using JobManager.Droid.Services;
+using JobManager.Services;
+using Xamarin.Forms;
+
 
 [assembly: Dependency(typeof(WebClientService))]
 namespace JobManager.Droid.Services
+
+
 {
     public class WebClientService : IWebClientService
     {
-        public async Task<string> GetString(string uri)
+        public class WebClientService : IWebClientService
+
+        //Related Documentation:
+        //https://docs.microsoft.com/en-us/xamarin/xamarin-forms/data-cloud/web-services/rest
+
+        public async Task<string> GetAsync(string uri)
         {
-            try 
-            { 
-
-
-           var client = new HttpClient();
-            var response = await client.GetAsync(uri);
-                return (response.IsSuccessStatusCode) ? await response.Content.ReadAsStringAsync() : null;
+            try
+            {
+                HttpClient client;
+                client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync(uri);
+                return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : null;
             }
             catch
             {
+                return null;
+            }
+        }
+        public async Task<string> PostAsync(string uri, string body, string type)
+        {
+            try
+            {
+                HttpClient client;
+                client = new HttpClient();
+
+                var content = new StringContent(body.ToString(), Encoding.UTF8, type);
+
+                HttpResponseMessage response = await client.PostAsync(uri, content);
+                return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : null;
+            }
+            catch
+            {
+
                 return null;
             }
         }
