@@ -13,6 +13,9 @@
             <Label Text="{Binding Name}" FontSize="Small" />
             <Label Text="Description:" FontSize="Medium" />
             <Label Text="{Binding Description}" FontSize="Small" />
+            <Button Text="Save" Command="{Binding SaveCommand}" />
+            <Button Text="Take Picture" Command="{Binding TakePictureCommand}" />
+            <Image Source="{Binding Picture}"/>
             <!-- <Label Text="Job Details Here!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" /> -->
