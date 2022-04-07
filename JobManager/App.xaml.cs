@@ -15,9 +15,11 @@ namespace JobManager
             InitializeComponent();
 
             //DependencyService.Register<JobDataStoreLocalJson>();
-            DependencyService.Register<JobDataStoreBlobStorageJson>();
+            // DependencyService.Register<JobDataStoreBlobStorageJson>();
+            DependencyService.Register<JobDataStoreAPI>();
+            DependencyService.Register<BlobStorageServiceAzure>();
 
-           // DependencyService.Register<IWebClientService>();
+            // DependencyService.Register<IWebClientService>();
 
             MainPage = new AppShell();
         }
