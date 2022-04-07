@@ -5,16 +5,17 @@
              xmlns:models="clr-namespace:JobManager.Models"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="JobManager.Views.JobListPage">
+
     <ContentPage.BindingContext>
         <viewmodels:JobListViewModel />
-
-
     </ContentPage.BindingContext>
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"></xct:ItemSelectedEventArgsConverter>
         </ResourceDictionary>
-    </ContentPage.Resources> '
+    </ContentPage.Resources>
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddCommand}">
             <ToolbarItem.IconImageSource>
@@ -25,9 +26,11 @@
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    <ContentPage.Content>
 
-        <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy}">
+    <ContentPage.Content>
+        <RefreshView 
+            Command="{Binding RefreshCommand}" 
+            IsRefreshing="{Binding IsBusy}">
             <ScrollView>
                 <StackLayout>
                     <ListView
@@ -35,16 +38,13 @@
                         CachingStrategy="RecycleElement"
                         ItemsSource="{Binding Jobs}"
                         RowHeight="60">
-
                         <ListView.Behaviors>
                             <xct:EventToCommandBehavior
                                 EventName="ItemSelected"
                                 Command="{Binding SelectCommand}"
                                 EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}">
-                                
                             </xct:EventToCommandBehavior>
                         </ListView.Behaviors>
-                        
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:Job">
                                 <ViewCell>
@@ -54,20 +54,9 @@
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                        <!--  SelectedItem="{Binding SelectedJob, Mode=TwoWay}">
-                       <ListView.Behaviors>
-                            <xct:EventToCommandBehaviour
-                                EventName ="ItemSelected"
-                                Command = "{Binding SelectedCommand}"
-                                EventArgsConverter = "{StaticResource ItemSelectedEventArgsConverter}"></xct:EventToCommandBehaviour>
-                                </ListView.Behaviors> -->
-                        
-                             </ListView>
-                         </StackLayout>
-                     </ScrollView>
-        
-
-          
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
         </RefreshView>
     </ContentPage.Content>
 </ContentPage>

@@ -1,39 +1,50 @@
-﻿using System.IO;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Text;
+﻿using Android.App;
 using Android.Content;
-using JobManager.Droid.Services;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using System;
+using System.Collections.Generic;
 using JobManager.Services;
+using System;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Text;
+using System.Net.Http;
 using Xamarin.Forms;
-
+using JobManager.Droid.Services;
 
 [assembly: Dependency(typeof(WebClientService))]
 namespace JobManager.Droid.Services
-
-
 {
+
     public class WebClientService : IWebClientService
     {
-        public class WebClientService : IWebClientService
+        public Task<string> GetAsync(string uri)
+        {
+            throw new NotImplementedException();
+        }
 
-        //Related Documentation:
-        //https://docs.microsoft.com/en-us/xamarin/xamarin-forms/data-cloud/web-services/rest
-
-        public async Task<string> GetAsync(string uri)
+        public async Task<string> GetString(string uri)
         {
             try
             {
+
                 HttpClient client;
                 client = new HttpClient();
                 HttpResponseMessage response = await client.GetAsync(uri);
+
+
                 return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : null;
             }
             catch
             {
                 return null;
             }
+
         }
+
         public async Task<string> PostAsync(string uri, string body, string type)
         {
             try
@@ -48,9 +59,29 @@ namespace JobManager.Droid.Services
             }
             catch
             {
+                return null;
+            }
 
+        }
+
+        public async Task<string> PutAsync(string uri, string body, string type)
+        {
+            try
+            {
+                HttpClient client;
+                client = new HttpClient();
+
+                var content = new StringContent(body.ToString(), Encoding.UTF8, type);
+
+                HttpResponseMessage response = await client.PutAsync(uri, content);
+                return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : null;
+            }
+            catch
+            {
                 return null;
             }
         }
     }
+
+
 }
