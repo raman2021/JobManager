@@ -21,8 +21,7 @@ namespace JobManager.Views
         private async void OnAccessAPIClicked(object sender, EventArgs e)
         {
             var service = DependencyService.Get<IWebClientService>();
-            var content = await service.GetString("https://www.goggle.com");
+            var content = await service.GetAsync("https://www.google.com");
         }
-
     }
 }

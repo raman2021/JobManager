@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobManager.Android", "JobMa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobManager", "JobManager\JobManager.csproj", "{A79BF0AE-3F2F-4BAF-A047-DD10E9A120BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobManager.API", "JobManager.API\JobManager.API.csproj", "{69524077-531A-4222-894E-16EA1F8F5C72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobManager.API", "JobManager.API\JobManager.API.csproj", "{69524077-531A-4222-894E-16EA1F8F5C72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
