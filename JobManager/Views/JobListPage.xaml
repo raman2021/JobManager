@@ -15,6 +15,7 @@
             <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"></xct:ItemSelectedEventArgsConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
+    
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddCommand}">

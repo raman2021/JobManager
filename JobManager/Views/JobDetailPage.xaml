@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:JobManager.ViewModels"
-             x:Class="JobManager.Views.JobDetailPage">
+             x:Class="JobManager.Views.JobManager.ViewModels.JobDetailPage">
     <ContentPage.BindingContext>
         <viewmodels:JobDetailViewModel></viewmodels:JobDetailViewModel>
     </ContentPage.BindingContext>
