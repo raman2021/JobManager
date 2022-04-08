@@ -18,8 +18,8 @@ namespace JobManager.Services
 
         private readonly BlobServiceClient service = new BlobServiceClient(ConnectionString);
 
-        private static string ConnectionString => "connectionstring";
-        private static string Container => "studentnumber";
+        private static string ConnectionString => "DefaultEndpointsProtocol=https;AccountName=isp1004example;AccountKey=m2fGXOU8vUMOr/hCp7YGfBFcwyb1vYZKXLXO0GrsDyuMnZkOyYsSgJCUA/D5XgpTKcyAjHTxuTl5+AStkc5gVQ==;EndpointSuffix=core.windows.net";
+        private static string Container => "A00244354";
 
         public async Task<MemoryStream> DownloadStreamAsync(string name)
         {
